@@ -39,12 +39,13 @@ NN.Entities = (function () {
             hp: 100, maxHp: 100,
             fireRate: 0.15, fireTimer: 0,
             bulletDmg: 10, bulletSpeed: 600, bulletPierce: 0, bulletCount: 1, spread: 0,
-            pulseCharge: 0, maxPulseCharge: 100, pulseChargeRate: 1,
+            pulseCharge: 100, // <--- CHANGE FROM 0 TO 100 FOR TESTING
+            maxPulseCharge: 100, pulseChargeRate: 1,
             dashCd: 0, maxDashCd: 2.0, dashTimer: 0, invuln: 0,
             aimX: 1, aimY: 0, angle: 0,
             stats: { kills: 0, score: 0 }
         };
-    }
+        }
 
     function spawnEnemy(type, x, y) {
         const e = enemyPool.get();
@@ -213,7 +214,7 @@ NN.Entities = (function () {
         }
 
         // Pulse
-        if (NN.Input.justPressed('ShiftLeft') && p.pulseCharge >= p.maxPulseCharge) {
+        if ((NN.Input.justPressed('ShiftLeft') || NN.Input.justPressed('ShiftRight')) && p.pulseCharge >= p.maxPulseCharge) {
             p.pulseCharge = 0;
             A.sfx.pulse();
             R.addShake(15);
