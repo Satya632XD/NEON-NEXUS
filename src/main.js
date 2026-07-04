@@ -95,16 +95,17 @@ NN.Game = (function () {
     }
 
     // --- State Transitions ---
-    function startGame() {
+        function startGame() {
         A.resume();
         E.reset();
         W.reset();
         P.clear();
         W.startNextWave();
         state = 'PLAYING';
+        UI.showScreen(null); // <--- THIS LINE HIDES ALL MENUS
         UI.showHUD(true);
         A.startMusic();
-    }
+        }
 
     function pauseGame() {
         if (state !== 'PLAYING') return;
