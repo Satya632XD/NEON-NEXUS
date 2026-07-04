@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>NEON NEXUS — Arena Survival</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="screen-flash"></div>
+        <div id="vignette"></div>
+        <div id="ui-layer">
+            <!-- Main Menu -->
+            <div id="main-menu" class="screen">
+                <h1 class="title">NEON<span>NEXUS</span></h1>
+                <p class="subtitle">— SURVIVE THE ABYSS —</p>
+                <div class="menu-buttons">
+                    <button id="btn-start" class="btn btn-primary">ENTER ARENA</button>
+                    <button id="btn-howto" class="btn">HOW TO PLAY</button>
+                    <button id="btn-stats" class="btn">STATISTICS</button>
+                </div>
+                <div id="highscore-display"></div>
+                <div id="version-text">v1.0</div>
+            </div>
+            <!-- How To Play -->
+            <div id="howto-menu" class="screen hidden">
+                <h2>HOW TO PLAY</h2>
+                <div class="howto-content">
+                    <div class="control-row"><span class="key">W A S D</span><span class="desc">Move your ship</span></div>
+                    <div class="control-row"><span class="key">MOUSE</span><span class="desc">Aim direction</span></div>
+                    <div class="control-row"><span class="key">AUTO</span><span class="desc">Fire is automatic</span></div>
+                    <div class="control-row"><span class="key">SPACE</span><span class="desc">Dash (brief invincibility)</span></div>
+                    <div class="control-row"><span class="key">SHIFT</span><span class="desc">Pulse Wave (needs charge)</span></div>
+                    <div class="control-row"><span class="key">P / ESC</span><span class="desc">Pause game</span></div>
+                </div>
+                <div class="howto-tips">
+                    <p>► Kill enemies to charge your <span class="hl-magenta">PULSE</span> meter.</p>
+                    <p>► Clear all enemies to choose an <span class="hl-cyan">UPGRADE</span>.</p>
+                    <p>► A <span class="hl-red">BOSS</span> appears every 5 waves.</p>
+                    <p>► Dashing through bullets saves your life.</p>
+                </div>
+                <button id="btn-howto-back" class="btn">BACK</button>
+            </div>
+            <!-- Stats -->
+            <div id="stats-menu" class="screen hidden">
+                <h2>STATISTICS</h2>
+                <div id="stats-content"></div>
+                <button id="btn-stats-back" class="btn">BACK</button>
+                <button id="btn-reset-stats" class="btn btn-danger">RESET DATA</button>
+            </div>
+            <!-- Pause -->
+            <div id="pause-menu" class="screen hidden">
+                <h2>PAUSED</h2>
+                <div class="menu-buttons">
+                    <button id="btn-resume" class="btn btn-primary">RESUME</button>
+                    <button id="btn-quit" class="btn">QUIT TO MENU</button>
+                </div>
+            </div>
+            <!-- Upgrade Choice -->
+            <div id="upgrade-menu" class="screen hidden">
+                <h2 id="upgrade-title">CHOOSE UPGRADE</h2>
+                <p class="upgrade-subtitle">Select one enhancement</p>
+                <div id="upgrade-cards"></div>
+            </div>
+            <!-- Game Over -->
+            <div id="gameover-menu" class="screen hidden">
+                <h2 class="go-title">GAME OVER</h2>
+                <div id="gameover-stats"></div>
+                <div class="menu-buttons">
+                    <button id="btn-retry" class="btn btn-primary">RETRY</button>
+                    <button id="btn-menu" class="btn">MAIN MENU</button>
+                </div>
+            </div>
+            <!-- HUD -->
+            <div id="hud" class="hidden">
+                <div class="hud-top">
+                    <div class="hud-hp">
+                        <div class="hud-label">HULL</div>
+                        <div class="hud-bar"><div id="hp-fill" class="bar-fill"></div></div>
+                        <div id="hp-text" class="hud-val">100</div>
+                    </div>
+                    <div class="hud-wave">
+                        <span id="wave-num" class="wave-num">1</span>
+                        <span class="hud-label">WAVE</span>
+                        <span id="enemies-left" class="enemies-left">0 left</span>
+                    </div>
+                    <div class="hud-pulse">
+                        <div class="hud-label">PULSE</div>
+                        <div class="hud-bar"><div id="pulse-fill" class="bar-fill pulse-color"></div></div>
+                        <div id="dash-cd" class="hud-val">DASH READY</div>
+                    </div>
+                </div>
+                <div class="hud-score">
+                    <span id="score-val">0</span>
+                </div>
+                <div id="boss-hp-bar" class="boss-hp-bar hidden">
+                    <div id="boss-hp-fill" class="boss-hp-fill"></div>
+                    <span id="boss-name" class="boss-name">BOSS</span>
+                </div>
+                <div id="wave-announce" class="wave-announce hidden"></div>
+            </div>
+            <!-- Mobile Controls -->
+            <div id="mobile-controls" class="hidden">
+                <div id="joystick-base" class="joystick-base">
+                    <div id="joystick-knob" class="joystick-knob"></div>
+                </div>
+                <button id="btn-dash-mobile" class="mobile-btn">DASH</button>
+                <button id="btn-pulse-mobile" class="mobile-btn">PULSE</button>
+            </div>
+        </div>
+    </div>
+    <script src="src/utils.js"></script>
+    <script src="src/save.js"></script>
+    <script src="src/input.js"></script>
+    <script src="src/audio.js"></script>
+    <script src="src/renderer.js"></script>
+    <script src="src/particles.js"></script>
+    <script src="src/entities.js"></script>
+    <script src="src/waves.js"></script>
+    <script src="src/upgrades.js"></script>
+    <script src="src/ui.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>
